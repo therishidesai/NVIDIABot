@@ -1,3 +1,4 @@
 <?php
-`gitpull`;
+`git pull`;
+print "test";
 ?>
