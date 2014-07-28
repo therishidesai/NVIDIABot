@@ -5,7 +5,7 @@ import math
 class Driver:
     ser = serial.Serial("/dev/ttyACM0", 9600)
     #motorPorts=[]
-    #sets up the motor ports
+    
     def __init__(motorPort1, motorPort2, motorPort3, motorPort4):
         motorPorts = [motorPort1, motorPort2, motorPort3, motorPort4]
         for i in range(motorPorts):
