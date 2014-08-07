@@ -1,13 +1,12 @@
-from tegrabot.joystick from Joystick
+from tegrabot.joystick import Joystick
 
 joystick = Joystick()
 
-joystick.connect()
+while(True):
+        joystick.connect()
+        while (joystick.isConnected()):
+                joystick.setData()
 
-while (joystick.isConnected()):
-    joystick.setData()
-    
-    print joystick.getJoyOneYAxis()
-    print joystick.getJoyTwoYAxis()
-    print joystick.getButtonVal()
-    
+                print joystick.getJoyOneYAxis()
+                print joystick.getJoyTwoYAxis()
+                print joystick.getButtonVal()
