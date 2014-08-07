@@ -1,17 +1,13 @@
-import pygame
-import math
-import sys
-import time
-#import pyglet
+from tegrabot.joystick from Joystick
 
-pygame.init()
-pygame.joystick.init()    
-js = pygame.joystick.Joystick(0)
-js.init()
+joystick = Joystick()
 
-while True:
-    pygame.event.pump()
-    jx = js.get_axis(0)    
-    print('axis 0: ' + str(jx))
-    time.sleep(5)
-    pygame.event.clear()
+joystick.connect()
+
+while (joystick.isConnected()):
+    joystick.setData()
+    
+    print joystick.getJoyOneYAxis()
+    print joystick.getJoyTwoYAxis()
+    print joystick.getButtonVal()
+    
