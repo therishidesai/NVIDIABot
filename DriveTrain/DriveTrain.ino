@@ -1,8 +1,3 @@
-// Sweep
-// by BARRAGAN <http://barraganstudio.com> 
-// This example code is in the public domain.
-
-
 #include <Servo.h> 
  
 Servo myservo1;  // create servo object to control a servo 
@@ -20,8 +15,8 @@ void setup()
    MC2 and MC7 in arduino port 9
    MC6 and MC with no fan in arduino port 3
  */
-  myservo1.attach(9);
-  myservo2.attach(3);
+  //myservo1.attach(9);
+  //myservo2.attach(3);
   Serial.begin(9600); // set the baud rate
   Serial.println("Ready");
   
