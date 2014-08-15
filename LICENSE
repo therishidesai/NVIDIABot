@@ -1,4 +1,3 @@
-'''
 Copyright (c) 2014, Rishi Desai
 All rights reserved.
 
@@ -22,29 +21,3 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-'''
-from tegrabot.joystick import Joystick
-from tegrabot.driver import Driver
-from tegrabot.arduino import Arduino
-from tegrabot.shooter import Shooter
-
-joystick = Joystick()
-driver = Driver()
-motorPorts=[5, 6]
-shooterPorts=[2,3]
-magPorts=[9, 10]
-arduino = Arduino(motorPorts, shooterPorts, magPorts)
-ser = serial.Serial('/dev/ttyAMC0')
-while(True):
-        joystick.connect()
-        while (joystick.isConnected()):
-                joystick.setData()
-
-                joy1= joystick.getJoyOneYAxis()
-                joy2= joystick.getJoyTwoYAxis()
-                joyButton= joystick.getButtonVal()
-                #data=[]
-                tank = driver.tankDrive(joy1, joy2)
-                data=[tank[0], tank[1], 0, 0, 0, 0]
-                arduino.sendData(data);
-                
