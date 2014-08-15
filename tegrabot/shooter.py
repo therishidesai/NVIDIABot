@@ -7,13 +7,13 @@ class Shooter:
     
     def __init__():
 
-    def shootLeft():
+    def shootLeft(distance):
         #distanceWaits = [5, 10, 15]
-        return 1
+        return distance
         
-    def shootRight():
+    def shootRight(distance):
         #distanceWaits = [5, 10, 15]
-        return 1
+        return distance
     
     def reloadLeft():
         return 1
