@@ -30,9 +30,9 @@ from tegrabot.shooter import Shooter
 
 joystick = Joystick()
 driver = Driver()
-motorPorts=[5, 6]
+motorPorts=[9, 12]
 shooterPorts=[2,3]
-magPorts=[9, 10]
+magPorts=[11, 10]
 arduino = Arduino(motorPorts, shooterPorts, magPorts)
 ser = serial.Serial('/dev/ttyAMC0')
 while(True):

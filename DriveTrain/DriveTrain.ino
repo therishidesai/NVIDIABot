@@ -73,15 +73,15 @@ void loop()
      myservo2.write(data[2])
      if(data[3]==1){
        digitalWrite(shooter1,HIGH)
-       delay(1000)
+       delay(200)
        digitalWrite(shooter1,LOW)  
      }else if(data[3] == 2){
        digitalWrite(shooter1,HIGH)
-       delay(2500)
+       delay(300)
        digitalWrite(shooter1,LOW)
      }else if(data[3] == 3){
        digitalWrite(shooter1,HIGH)
-       delay(5000)
+       delay(400)
        digitalWrite(shooter1,LOW)
      }
      if(data[4]==1){
