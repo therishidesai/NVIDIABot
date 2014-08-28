@@ -44,7 +44,7 @@ void setup()
   //myservo2.attach(3);
   Serial.begin(9600); // set the baud rate
   Serial.println("Ready");
-  
+  /*
   if(Serial.available()){
     int ports[] = Serial.read()
     for(int i=0; i<6; i++){
@@ -60,7 +60,7 @@ void setup()
     shooter2=ports[3]
     mag1 = ports[4]
     mag2 = ports[5]
-  }
+  }*/
 } 
  
  
