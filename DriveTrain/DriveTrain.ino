@@ -66,9 +66,17 @@ void setup()
  
 void loop() 
 { 
-  if(Serial.available()){ // only send data back if data has been sent
+  int data[6];
+  int i=0;
+  while(Serial.available()>0){
+        data[i]=Serial.read();
+        i++;
+  }
+        
+  
+//  if(Serial.available()){ // only send data back if data has been sent
      //char inByte = Serial.read(); // read the incoming data
-     int data[] = Serial.read();
+     // = Serial.read();
      myservo1.write(data[1])
      myservo2.write(data[2])
      if(data[3]==1){
@@ -94,7 +102,7 @@ void loop()
        delay(1000)
        digitalWrite(mag2,LOW)
      }
-  }
+ // }
   
   delay(15);
 } 
