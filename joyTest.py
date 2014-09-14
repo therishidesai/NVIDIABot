@@ -33,7 +33,7 @@ driver = Driver()
 motorPorts=[9, 12]
 shooterPorts=[2,3]
 magPorts=[11, 10]
-arduino = Arduino(motorPorts, shooterPorts, magPorts)
+arduino = Arduino()
 ser = serial.Serial('/dev/ttyAMC0')
 while(True):
         joystick.connect()

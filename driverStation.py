@@ -43,6 +43,7 @@ started = False
 def startSession():
     started = True
     s.sendto(pickle.dumps(started), (host, port))
+    # change wait to 2 after done testing
     top.after(2000, sendJoystickVal)
 def endSession():
     started = False
@@ -93,6 +94,7 @@ def sendJoystickVal():
         data = [xAxis, yAxis, button]
         s.sendto(pickle.dumps(data), (host, port))
         print data
+        #change wait to 2 after done testing
         top.after(2000, sendJoystickVal)
 whileJoyCon()
 #rint started
