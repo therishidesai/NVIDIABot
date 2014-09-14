@@ -33,8 +33,8 @@ top = Tkinter.Tk()
 joyFrame = Tkinter.Frame(top)
 noJoyFrame = Tkinter.Frame(top)
 port = 8081
-host9999 = "10.99.99.2"
-host = "192.168.1.83"
+host = "10.99.99.2"
+#host = "192.168.1.83"
 pygame.init()
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 #j =0;

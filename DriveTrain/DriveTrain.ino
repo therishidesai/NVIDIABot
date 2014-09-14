@@ -23,7 +23,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-include <Servo.h> 
+#include <Servo.h> 
  
 Servo myservo1;  // create servo object to control a servo 
 Servo myservo2;//pytyhon
@@ -31,11 +31,18 @@ Servo myservo3;
 Servo myservo4;// a maximum of eight servo objects can be created 
  
 int pos = 0;    // variable to store the servo position 
-int shooter1, shooter2, mag1, mag2;
+int shooter1=10;
+int shooter2=9;
+int mag1=8;
+int mag2=7;
 void setup() 
 { 
- // myservo1.attach(8);
- // myservo2.attach(9);
+ myservo1.attach(11);
+ myservo2.attach(12);
+ pinMode(shooter1, OUTPUT);
+ pinMode(shooter2, OUTPUT);
+ pinMode(mag1, OUTPUT);
+ pinMode(mag2, OUTPUT);
  /*
    MC2 and MC7 in arduino port 9
    MC6 and MC with no fan in arduino port 3
@@ -67,40 +74,44 @@ void setup()
 void loop() 
 { 
   int data[6];
-  int i=0;
   while(Serial.available()>0){
-        data[i]=Serial.read();
-        i++;
+        data[0]=Serial.parseInt();
+        data[1]=Serial.parseInt();
+        data[2]=Serial.parseInt();
+        data[3]=Serial.parseInt();
+        data[4]=Serial.parseInt();
+        data[5]=Serial.parseInt();
+        Serial.flush();
   }
         
   
 //  if(Serial.available()){ // only send data back if data has been sent
      //char inByte = Serial.read(); // read the incoming data
      // = Serial.read();
-     myservo1.write(data[1])
-     myservo2.write(data[2])
+     myservo1.write(data[1]);
+     myservo2.write(data[2]);
      if(data[3]==1){
-       digitalWrite(shooter1,HIGH)
-       delay(200)
-       digitalWrite(shooter1,LOW)  
+       digitalWrite(shooter1,HIGH);
+       delay(200);
+       digitalWrite(shooter1,LOW);  
      }else if(data[3] == 2){
-       digitalWrite(shooter1,HIGH)
-       delay(300)
-       digitalWrite(shooter1,LOW)
+       digitalWrite(shooter1,HIGH);
+       delay(300);
+       digitalWrite(shooter1,LOW);
      }else if(data[3] == 3){
-       digitalWrite(shooter1,HIGH)
-       delay(400)
-       digitalWrite(shooter1,LOW)
+       digitalWrite(shooter1,HIGH);
+       delay(400);
+       digitalWrite(shooter1,LOW);
      }
      if(data[4]==1){
-       digitalWrite(mag1,HIGH)
-       delay(1000)
-       digitalWrite(mag1,LOW)
+       digitalWrite(mag1,HIGH);
+       delay(1000);
+       digitalWrite(mag1,LOW);
      }
      if(data[5]==1){
-       digitalWrite(mag2,HIGH)
-       delay(1000)
-       digitalWrite(mag2,LOW)
+       digitalWrite(mag2,HIGH);
+       delay(1000);
+       digitalWrite(mag2,LOW);
      }
  // }
   
