@@ -31,7 +31,7 @@ class Driver:
     #ser = serial.Serial("/dev/ttyACM0", 9600)
     #motorPorts=[]
     #motor setup 2
-    def __init__(self):
+    #def __init__(self):
                  
     def driveMotor(self, speed):
         motorSpeed =90
