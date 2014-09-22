@@ -1,6 +1,6 @@
 import serial
 import time
-ser = serial.Serial('/dev/ttyACM0')
+ser = serial.Serial('/dev/ttyACM2')
 #while(True):
 data = [1,0, 2, 3]
 str1=""

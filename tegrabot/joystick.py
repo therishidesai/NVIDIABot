@@ -41,20 +41,21 @@ class Joystick:
             self.s = s
     def connect(self):
         data, addr = self.s.recvfrom(1024)
-        Joystick.sessionStarted = pickle.load(data)
-    def isConnected():
+        Joystick.sessionStarted = pickle.loads(data)
+    def isConnected(self):
         return Joystick.sessionStarted
     def setData(self):
         data, addr = self.s.recvfrom(1024)
-        Joystick.joyData = pickle.load(data)
+        Joystick.joyData = pickle.loads(data)
 
-    def getJoyOneYAxis():
+    def getJoyOneYAxis(self):
         #data, addr = s.recvfrom(1024)
-        return Joystick.joyData[1]
-    def getJoyTwoYAxis():
+	#print Joystick.joyData[0]
+	return Joystick.joyData[0]
+    def getJoyTwoYAxis(self):
         #data, addr = s.recvfrom(1024)
-        return Joystick.joyData[2] 
-    def getButtonVal():
+        return Joystick.joyData[1] 
+    def getButtonVal(self):
         #data, addr = s.recvfrom(1024)
-        return Joystick.joyData[3]
+        return Joystick.joyData[2]
     

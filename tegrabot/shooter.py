@@ -32,16 +32,16 @@ class Shooter:
     
     #def __init__():
 
-    def shootLeft(distance):
+    def shootLeft(self, distance):
         #distanceWaits = [5, 10, 15]
         return distance
         
-    def shootRight(distance):
+    def shootRight(self, distance):
         #distanceWaits = [5, 10, 15]
         return distance
     
-    def reloadLeft():
+    def reloadLeft(self):
         return 1
    
-    def reloadRight():
+    def reloadRight(self):
         return 1

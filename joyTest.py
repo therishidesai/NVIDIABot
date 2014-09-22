@@ -30,21 +30,31 @@ from tegrabot.shooter import Shooter
 
 joystick = Joystick()
 driver = Driver()
+shooter = Shooter()
 motorPorts=[9, 12]
 shooterPorts=[2,3]
 magPorts=[11, 10]
 arduino = Arduino()
-ser = serial.Serial('/dev/ttyAMC0')
+#ser = serial.Serial('/dev/ttyAMC0')
 while(True):
         joystick.connect()
         while (joystick.isConnected()):
                 joystick.setData()
-
+		print joystick.isConnected()
                 joy1= joystick.getJoyOneYAxis()
                 joy2= joystick.getJoyTwoYAxis()
                 joyButton= joystick.getButtonVal()
                 #data=[]
                 tank = driver.tankDrive(joy1, joy2)
-                data=[tank[0], tank[1], 0, 0, 0, 0]
-                arduino.sendData(data);
+		if(joyButton==0):
+			shootPos=1
+		elif(joyButton==1):
+			shootPos=2
+		elif(joyButton==2):
+			shootPos=3
+		else:
+			shootPos=0             	
+		data=[90, 90, shooter.shootLeft(shootPos),0, 0, 0, 0]
+                print data
+		arduino.sendData(data);
                 

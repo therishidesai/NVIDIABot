@@ -32,19 +32,36 @@ class Arduino:
     #def __init__():
         
     
-    def sendData(data):
+    def sendData(self, data):
         dataS=""
-        for i in range(len(data)):
-          if(len(str(data[i]))==2):
-            s=",".join(str(data[i]))
-            s+=",-1,"
-            dataS+=s
-          elif(len(str(data[i]))==3):
-            s=",".join(str(data[i]))
-            s+=","
-            dataS+=s
-          else:
-            dataS+=str(data[i])
+	for i in range(2):
+	    if(len(str(data[i]))==2):
+		s=""
+		s+=str(len(str(data[i])))
+		s+=","
+            	s+=",".join(str(data[i]))
+            	s+=","
+		dataS+=s
+            elif(len(str(data[i]))==3):
+            	s=""
+		s+=str(len(str(data[i])))
+		s+=","
+		s+=",".join(str(data[i]))
+            	s+=","
+            	dataS+=s
+            else:
+		s=""
+                s+=str(len(str(data[i])))
+		s+=","
+		s+=",".join(str(data[i]))
+                s+=","
+		dataS+=s
+
+	x=2
+	while(x<len(data)):
+     	    dataS+=str(data[x])
             dataS+=","
-            
-        Arduino.ser.write(dataS)
+            x+=1
+	print dataS            
+	Arduino.ser.write(dataS)
+	#print Arduino.ser.read(2)
