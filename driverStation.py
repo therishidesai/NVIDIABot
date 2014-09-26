@@ -41,19 +41,23 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.bind(("", 0))
 started = False
 def startSession():
-    started = True
+    global started 
+    started= True
     s.sendto(pickle.dumps(started), (host, port))
     # change wait to 2 after done testing
-    top.after(2000, sendJoystickVal)
+    top.after(200, sendJoystickVal)
 def endSession():
-    started = False
+    global started 
+    started= False
     #s.bind(("", 0))
     s.sendto(pickle.dumps(started), (host, port))
+    #top.destroy()
+def closeProgram():
     s.close()
     top.destroy()
 sessionStart = Tkinter.Button(top, text ="Start Session", command = startSession)
 sessionEnd = Tkinter.Button(top, text="End Session", command=endSession)
-
+programClose= Tkinter.Button(top, text="Close Program", command=closeProgram)
 def isJoystick():
     return pygame.joystick.get_count()>0
 
@@ -63,6 +67,8 @@ def whileJoyCon():
         sessionStart.pack()
         sessionEnd.config(state="normal")
         sessionEnd.pack()
+        programClose.config(state="normal")
+        programClose.pack()
         howTo = Tkinter.Text(top)
         howTo.insert(Tkinter.INSERT, "Press Start on the Joystick or end session to stop the program")
         howTo.pack()
@@ -72,6 +78,8 @@ def whileJoyCon():
         sessionStart.pack()
         sessionEnd.config(state="disable")
         sessionEnd.pack()
+        programClose.config(state="normal")
+        programClose.pack()
         noJoy = Tkinter.Text(top)
         noJoy.insert(Tkinter.INSERT, "No Joystick Connected. Please connect a Joystick and Restart the program")
         noJoy.pack()        
@@ -91,11 +99,11 @@ def sendJoystickVal():
                 button = i
                 break
         
-        data = [xAxis, yAxis, button]
+        data = [started, xAxis, -yAxis, button]
         s.sendto(pickle.dumps(data), (host, port))
         print data
         #change wait to 2 after done testing
-        top.after(2000, sendJoystickVal)
+        top.after(200, sendJoystickVal)
 whileJoyCon()
 #rint started
 #f(started):

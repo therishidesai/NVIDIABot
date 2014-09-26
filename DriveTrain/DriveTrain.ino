@@ -75,12 +75,79 @@ void loop()
 { 
   int data[6];
   while(Serial.available()>0){
-        data[0]=Serial.parseInt();
-        data[1]=Serial.parseInt();
+        int d01= Serial.parseInt();
+        if(d01==1){
+          int d02 = Serial.parseInt();
+          data[0]=d02;
+        }else if(d01==2){
+          int d02 = Serial.parseInt();
+          int d03 =Serial.parseInt();
+          data[0]=(d02*10)+d03;
+        }else if(d01==3){
+          int d02 = Serial.parseInt();
+          int d03 =Serial.parseInt();
+          int d04 =Serial.parseInt();
+          data[0]=(d02*100)+(d03*10)+d04;
+        }
+        
+        int d11= Serial.parseInt();
+        if(d11==1){
+          int d12 = Serial.parseInt();
+          data[1]=d12;
+        }else if(d11==2){
+          int d12 = Serial.parseInt();
+          int d13 =Serial.parseInt();
+          data[1]=(d12*10)+d13;
+        }else if(d11==3){
+          int d12 = Serial.parseInt();
+          int d13 =Serial.parseInt();
+          int d14 =Serial.parseInt();
+          data[1]=(d12*100)+(d13*10)+d14;
+        }
+        //data[1]=Serial.parseInt();
         data[2]=Serial.parseInt();
         data[3]=Serial.parseInt();
         data[4]=Serial.parseInt();
         data[5]=Serial.parseInt();
+        myservo1.write(data[0]);
+        myservo2.write(data[1]);
+         if(data[2]==1){
+           digitalWrite(shooter1,HIGH);
+           delay(50);
+           digitalWrite(shooter1,LOW);  
+         }else if(data[2] == 2){
+           digitalWrite(shooter1,HIGH);
+           delay(75);
+           digitalWrite(shooter1,LOW);
+         }else if(data[2] == 3){
+           digitalWrite(shooter1,HIGH);
+           delay(100);
+           digitalWrite(shooter1,LOW);
+         }
+         if(data[3]==1){
+           digitalWrite(shooter2,HIGH);
+           delay(50);
+           digitalWrite(shooter2,LOW);  
+         }else if(data[3] == 2){
+           digitalWrite(shooter2,HIGH);
+           delay(75);
+           digitalWrite(shooter2,LOW);
+         }else if(data[3] == 3){
+           digitalWrite(shooter2,HIGH);
+           delay(100);
+           digitalWrite(shooter2,LOW);
+         }
+         if(data[4]==1){
+           digitalWrite(mag1,HIGH);
+           delay(1000);
+           digitalWrite(mag1,LOW);
+         }
+         if(data[5]==1){
+           digitalWrite(mag2,HIGH);
+           delay(1000);
+           digitalWrite(mag2,LOW);
+         }
+
         Serial.flush();
   }
         
@@ -88,32 +155,7 @@ void loop()
 //  if(Serial.available()){ // only send data back if data has been sent
      //char inByte = Serial.read(); // read the incoming data
      // = Serial.read();
-     myservo1.write(data[1]);
-     myservo2.write(data[2]);
-     if(data[3]==1){
-       digitalWrite(shooter1,HIGH);
-       delay(200);
-       digitalWrite(shooter1,LOW);  
-     }else if(data[3] == 2){
-       digitalWrite(shooter1,HIGH);
-       delay(300);
-       digitalWrite(shooter1,LOW);
-     }else if(data[3] == 3){
-       digitalWrite(shooter1,HIGH);
-       delay(400);
-       digitalWrite(shooter1,LOW);
-     }
-     if(data[4]==1){
-       digitalWrite(mag1,HIGH);
-       delay(1000);
-       digitalWrite(mag1,LOW);
-     }
-     if(data[5]==1){
-       digitalWrite(mag2,HIGH);
-       delay(1000);
-       digitalWrite(mag2,LOW);
-     }
- // }
+      // }
   
-  delay(15);
+  //delay(15);
 } 

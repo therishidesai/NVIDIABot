@@ -34,34 +34,35 @@ class Arduino:
     
     def sendData(self, data):
         dataS=""
-	for i in range(2):
-	    if(len(str(data[i]))==2):
-		s=""
-		s+=str(len(str(data[i])))
-		s+=","
-            	s+=",".join(str(data[i]))
-            	s+=","
-		dataS+=s
-            elif(len(str(data[i]))==3):
-            	s=""
-		s+=str(len(str(data[i])))
-		s+=","
-		s+=",".join(str(data[i]))
-            	s+=","
-            	dataS+=s
-            else:
-		s=""
-                s+=str(len(str(data[i])))
-		s+=","
-		s+=",".join(str(data[i]))
-                s+=","
-		dataS+=s
+      	for i in range(2):
+      	  if(len(str(data[i]))==2):
+        		s=""
+        		s+=str(len(str(data[i])))
+        		s+=","
+            s+=",".join(str(data[i]))
+            s+=","
+        		dataS+=s
+          elif(len(str(data[i]))==3):
+            s=""
+      		  s+=str(len(str(data[i])))
+      		  s+=","
+      		  s+=",".join(str(data[i]))
+            s+=","
+            dataS+=s
+          else:
+      		  s=""
+            s+=str(len(str(data[i])))
+        		s+=","
+        		s+=",".join(str(data[i]))
+            s+=","
+      		  dataS+=s
 
-	x=2
-	while(x<len(data)):
-     	    dataS+=str(data[x])
-            dataS+=","
-            x+=1
-	print dataS            
-	Arduino.ser.write(dataS)
-	#print Arduino.ser.read(2)
+        x=2
+        while(x<len(data)):
+          dataS+=str(data[x])
+          dataS+=","
+          x+=1
+          print dataS            
+        	Arduino.ser.write(dataS)
+        	Arduino.ser.flushOutput()
+          #print Arduino.ser.read(2)
