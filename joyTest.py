@@ -55,7 +55,7 @@ while(True):
             			shootPos=3
             		else:
             			shootPos=0             	
-            		data=[90, 90, shooter.shootLeft(shootPos),0, 0, 0, 0]
+            		data=[90, 90, shooter.shootLeft(shootPos),0, 0, 0]
                 #print data
             		arduino.sendData(data)
   data=[90,90,0,0,0,0]
