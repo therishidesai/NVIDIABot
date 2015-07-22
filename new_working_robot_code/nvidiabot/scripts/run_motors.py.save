@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import rospy
+import std_msgs.msg import String, UInt16
+
+def run_motors(direction):
+    forward_motor_speed = 50
+    reverse_motor_speed = 130
+
+    if direction == 'f':
+        return forward_motor_speed        
+    elif direction == 'r':
+        return reverse_motor_speed
+    else:
+        motor_speed=-1
+        return motor_speed
+
+def run_motors_speed(speed):
+    if speed > 0.0:
+        motor_speed = int(speed*90.0)
+        return motor_speed
+    elif speed<0.0:
+        motor_speed = 90 + int(speed*90.0)
+        return motor_speed
+    motor_speed=-1
+    return motor_speed
+
+def main():
+    rospy.init_node('drive_motors')
+    cmd_publisher = rospy.Publisher('motor_command', UInt16)
+    while True:
+        try:
+            cmd = raw_input('Movement command ("f", "r"): ')
+            if cmd != 'f' and cmd != 'r':
+                continue
+            # TODO: Publish cmd onto the 'move_command' topic.
+            
+        except EOFError: # Exit the program on Ctrl-D.
+            print
+            return

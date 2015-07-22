@@ -1,0 +1,7 @@
+<launch>
+	<node name="joy_node" pkg="joy" type="joy_node" respawn="true" />
+	<node name="joystick" pkg="nvidiabot" type="joystick.py" respawn="true" />
+	<node name="drive_shoot_controller" pkg="nvidiabot" type="drive_shoot.py" respawn="true" />
+	<node name="serial_node" pkg="nvidiabot" type="serial_node.py" args="/dev/ttyACM0" respawn="true" />
+
+</launch>
