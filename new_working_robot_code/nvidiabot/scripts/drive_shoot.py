@@ -63,7 +63,7 @@ def arcade_drive(throttle, turn):
     return speeds
 
 def skim(speed):
-    gain = 0.5
+    gain = 0.1
 
     if speed > 1.0:
         return -((speed - 1.0) * gain)
